@@ -20,3 +20,31 @@
 	2）$ git reset --hard HEAD^返回上一版本
 		$ git reset --hard 3628164根据id号回退版本
 	3）$ git reflog查看命令历史，以便确定要回到未来的哪个版本。
+	
+四、关于修改
+	1）$ git checkout -- readme.txt	把readme.txt文件在工作区的修改全部撤销
+	git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+	2）$ git reset HEAD readme.txt	可以把暂存区的修改撤销掉（unstage），重新放回工作区（相当于撤销add操作）
+	3）$ git rm test.txt删除操作
+	4）撤销工作区的删除（相当于还原）$ git checkout -- test.txt
+	
+五、添加远程库GitHub
+	1）首先在服务器端新建一个repository
+	2）生成SSH密钥用于SSH连接
+		$ ssh-keygen -t rsa -C "youremail@example.com"
+		在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥
+		在SSH KEYS中新建一个key取名并粘贴id_rsa.pub中内容。
+	2）$ git remote add origin git@github.com:juhao213/Test.git
+	3）$ git push -u origin master （-f）	推送本地内容到服务器,加-f选项可以推送以前版本
+	
+六、从远程库克隆（比如说复制gitskills）
+	$ git clone git@github.com:juhao213/gitskills.git
+	
+七、分支操作
+	1）$ git checkout -b dev	创建dev分支并切换到dev分支（创建并切换）
+	等同于：$ git branch dev
+			$ git checkout dev
+	2）$ git branch	查看当前分支
+	3）$ git checkout master	切换回master分支
+	4）$ git merge [--no-ff -m "merge with no-ff"] dev	把dev分支的工作成果合并到当前(master)分支上，可选项表示禁用fast forward，保留分支痕迹。
+	5）$ git branch -d dev	删除dev分支
