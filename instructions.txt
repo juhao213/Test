@@ -1,0 +1,22 @@
+教程取自http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+
+一、安装git	http://msysgit.github.io/
+	安装完成之后输入本机器的id和邮箱地址
+	$ git config --global user.name "Your Name"
+	$ git config --global user.email "email@example.com"
+	
+二、创建版本库
+	1）在一个目录下（最好路径中无中文）输入：
+		$ git init	会出现一个新的.git目录，就是本地的仓库。
+	2）添加文件：
+		$ git add readme.txt
+	3）把文件提交到仓库：
+		$ git commit -m "wrote a readme file"
+	4）可以add很多文件一次性提交
+	5）$ git status和$ git diff readme.txt可用于仓库查看状态
+	
+三、版本回退
+	1）$ git log查看版本信息，显示从最近到最远的提交日志。
+	2）$ git reset --hard HEAD^返回上一版本
+		$ git reset --hard 3628164根据id号回退版本
+	3）$ git reflog查看命令历史，以便确定要回到未来的哪个版本。
